@@ -1,4 +1,4 @@
-# Uber Eats Clone with Expo
+# Uber Clone with Expo
 [![follow @victorebukaezea](https://img.shields.io/twitter/follow/victorebukaezea.svg?style=for-the-badge&logo=TWITTER&logoColor=FFFFFF&labelColor=00aced&logoWidth=20&color=lightgray)](https://twitter.com/victorebukaezea)
 
 
@@ -10,8 +10,7 @@
 - React Redux 
 - React Native Navigation and Tabs Navigation 
 - Google Map Api
-- Firebase
-
+-TailWindCSS
 <p align="center">
   <img src="screenshots/screenshare-3.png?raw=true" />
 </p>
