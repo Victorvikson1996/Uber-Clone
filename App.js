@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 import { Provider } from 'react-redux';
 import Homescreen from './screens/HomeScreen';
 import Mapscreen from './screens/MapScreen';
@@ -27,11 +27,16 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
-          <Stack.Navigator screenOptions={screenOptions}>
-            <Stack.Screen name="HomeScreen" component={Homescreen} />
-            <Stack.Screen name="MapScreen" component={Mapscreen} />
-
-          </Stack.Navigator>
+          <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={{ flex: 1 }}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? -64 : 0}
+          >
+            <Stack.Navigator screenOptions={screenOptions}>
+              <Stack.Screen name="HomeScreen" component={Homescreen} />
+              <Stack.Screen name="MapScreen" component={Mapscreen} />
+            </Stack.Navigator>
+          </KeyboardAvoidingView>
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
@@ -39,11 +44,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
