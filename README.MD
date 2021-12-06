@@ -10,9 +10,15 @@
 - React Redux 
 - React Native Navigation and Tabs Navigation 
 - Google Map Api
--TailWindCSS
-<p align="center">
-  <img src="screenshots/screenshare-3.png?raw=true" />
+- TailWindCSS
+
+
+<p float="left">
+  <img src="screenshots/Home.PNG?raw=true" width="360" />
+  <img src="screenshots/Home1.PNG?raw=true" width="360" />
+  <img src="screenshots/Destination.PNG?raw=true" width="360" />
+  <img src="screenshots/Select.PNG?raw=true" width="360" />
+  <img src="screenshots/Select2.PNG?raw=true" width="360" />
 </p>
 
 ## Install & Build 
@@ -25,7 +31,7 @@ Install: `yarn` or `yarn install`
 
 Run Project Locally: `yarn dev` or `yarn start`
 
-
-<p align="left">
-  <img src="screenshots/screenshot-v0.0.1.jpg?raw=true" width="360" />
+<p align="center">
+  <img src="screenshots/screenshare-3.png?raw=true" />
 </p>
+
