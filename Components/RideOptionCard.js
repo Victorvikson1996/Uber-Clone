@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View, StyleSheet, SafeAreaView, FlatList, Text, Image, TouchableOpacity
 } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { selectTravelTimeInformation } from '../slice/navSlice';
 
 
 const data = [
@@ -28,9 +30,15 @@ const data = [
         image: 'https://links.papareact.com/7pf'
     }
 ]
+const SURGE_CHARGE_RATE = 20
+
 
 const RideoptionCard = () => {
+
+    const [ selected, setSelected ] = useState(null)
     const navigation = useNavigation();
+
+    const travelTimeInformation = useSelector(selectTravelTimeInformation);
 
     return (
         <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -40,13 +48,19 @@ const RideoptionCard = () => {
                     style={tw`absolute top-3 left-5 p-3 z-50 rounded-full`} >
                     <Icon name="chevron-left" type='font-awsome' />
                 </TouchableOpacity>
-                <Text style={tw`text-center py-5 text-xl`}>Select a Ride</Text>
+                <Text style={tw`text-center py-5 text-xl`}>
+                    Select a Ride - {travelTimeInformation?.distance.text}
+                </Text>
             </View>
             <FlatList
                 data={data}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item: { id, title, multiplier, image }, item }) => (
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => setSelected(item)}
+                        style={tw`flex-row  justify-between items-center px-10  ${id === selected?.id && 'bg-gray-200'}`}
+
+                    >
                         <Image
                             style={{
                                 width: 100,
@@ -55,12 +69,31 @@ const RideoptionCard = () => {
                             }}
                             source={{ uri: image }}
                         />
+                        <View style={tw`-ml-6`}>
+                            <Text style={tw`text-xl font-semibold`}>{title}</Text>
+                            <Text>{travelTimeInformation?.duration.text}</Text>
+                        </View>
+                        <Text style={tw`text-xl`}>
+                            {new Intl.NumberFormat('en-ng', {
+                                style: 'currency',
+                                currency: 'NGN'
+
+                            }).format(
+                                (travelTimeInformation?.duration.value * SURGE_CHARGE_RATE * multiplier) / 100
+                            )}
+                        </Text>
                     </TouchableOpacity>
                 )}
             />
+            <View style={tw`mt-auto border-t border-gray-200`}>
+                <TouchableOpacity disabled={!selected} style={tw`bg-black py-3 m-3 ${!selected && 'bg-gray-300'}`}>
+                    <Text style={tw`text-center  text-white  text-xl`}>Choose {selected?.title}</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 }
+
 
 const styles = StyleSheet.create({})
 
