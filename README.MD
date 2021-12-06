@@ -15,7 +15,7 @@
 
 <p float="left">
   <img src="screenshots/Home.PNG?raw=true" width="360" />
-  <img src="screenshots/Home1.PNG?raw=true" width="360" />
+  <img src="screenshots/Home2.PNG?raw=true" width="360" />
   <img src="screenshots/Destination.PNG?raw=true" width="360" />
   <img src="screenshots/Select.PNG?raw=true" width="360" />
   <img src="screenshots/Select2.PNG?raw=true" width="360" />
